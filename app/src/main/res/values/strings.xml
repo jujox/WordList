@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WordList</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="searchText">Search a word:</string>
+    <string name="buttonAddNewWord">Add new word</string>
+    <string name="buttonPlay">Play!</string>
+    <string name="title_activity_add_word">Add New Word</string>
+    <string name="addWordText">New word:</string>
+    <string name="meaningText">Meaning:</string>
+    <string name="buttonSaveNewWord">Save</string>
+    <string name="dictionaryText">Dictionary:</string>
+    <string name="Saved">Saved</string>
+    <string name="title_activity_play">PlayActivity</string>
+    <string name="playMsg">Time to play!</string>
+    <string name="selectDictionary">Which dictionary do you want to play with?</string>
+</resources>

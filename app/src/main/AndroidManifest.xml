@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="es.juanjo.wordlist.wordlist" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="es.juanjo.wordlist.wordlist.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="es.juanjo.wordlist.wordlist.AddWordActivity"
+            android:label="@string/title_activity_add_word" >
+            <intent-filter>
+                <action android:name="es.juanjo.wordlist.wordlist.AddWordActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="es.juanjo.wordlist.wordlist.PlayActivity"
+            android:label="@string/title_activity_play" >
+            <intent-filter>
+                <action android:name="es.juanjo.wordlist.wordlist.PlayActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
