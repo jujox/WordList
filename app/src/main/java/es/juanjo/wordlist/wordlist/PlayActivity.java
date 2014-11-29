@@ -89,6 +89,9 @@ public class PlayActivity extends Activity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, dictionaries);
         spinnerDiccionarios.setAdapter(adapter);
+        //TODO Controlar el diccionario seleccionado
+        //TODO Añadir una opción "todos"
+
     }
 
 }
