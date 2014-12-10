@@ -23,5 +23,14 @@
         android:layout_below="@+id/textView"
         android:layout_alignEnd="@+id/textView" />
 
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/buttonVolverPrincipal"
+        android:id="@+id/buttonVolverPrincipal"
+        android:layout_below="@id/spinnerDiccionarios"
+        android:layout_toRightOf="@id/buttonSaveNewWord"
+        android:layout_marginTop="10dp"
+        android:onClick="backToMain"/>
 
 </RelativeLayout>

@@ -66,5 +66,23 @@
         android:layout_marginTop="10dp"
         android:onClick="saveWord"/>
 
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/buttonVolverPrincipal"
+        android:id="@+id/buttonVolverPrincipal"
+        android:layout_below="@id/editTextDictionary"
+        android:layout_toRightOf="@id/buttonSaveNewWord"
+        android:layout_marginTop="10dp"
+        android:onClick="backToMain"/>
 
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/buttonPlay"
+        android:id="@+id/buttonPlay"
+        android:layout_below="@id/editTextDictionary"
+        android:layout_toRightOf="@id/buttonVolverPrincipal"
+        android:layout_marginTop="10dp"
+        android:onClick="showPlayActivity"/>
 </RelativeLayout>

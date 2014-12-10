@@ -1,6 +1,7 @@
 package es.juanjo.wordlist.wordlist;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -67,4 +68,11 @@ public class AddWordActivity extends Activity {
         editTextDictionaryView.setAdapter(adapter);
     }
 
+    public void backToMain(View view) {
+        startActivity(new Intent("es.juanjo.wordlist.wordlist.MainActivity"));
+    }
+
+    public void showPlayActivity(View view) {
+        startActivity(new Intent("es.juanjo.wordlist.wordlist.PlayActivity"));
+    }
 }

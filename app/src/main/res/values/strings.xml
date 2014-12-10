@@ -11,6 +11,7 @@
     <string name="addWordText">New word:</string>
     <string name="meaningText">Meaning:</string>
     <string name="buttonSaveNewWord">Save</string>
+    <string name="buttonVolverPrincipal">Back</string>
     <string name="dictionaryText">Dictionary:</string>
     <string name="Saved">Saved</string>
     <string name="title_activity_play">PlayActivity</string>

@@ -2,6 +2,7 @@ package es.juanjo.wordlist.wordlist;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -92,6 +93,10 @@ public class PlayActivity extends Activity {
         //TODO Controlar el diccionario seleccionado
         //TODO Añadir una opción "todos"
 
+    }
+
+    public void backToMain(View view) {
+        startActivity(new Intent("es.juanjo.wordlist.wordlist.MainActivity"));
     }
 
 }
