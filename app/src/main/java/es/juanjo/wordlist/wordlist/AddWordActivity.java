@@ -37,6 +37,7 @@ public class AddWordActivity extends Activity {
         db.close();
 
         // Mostramos mensaje y borramos los textos anteriores
+        // @TODO Los mensajes deben ir a la configuración por idiomas
         String msg = getString(R.string.Saved);
         Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
         toast.show();
