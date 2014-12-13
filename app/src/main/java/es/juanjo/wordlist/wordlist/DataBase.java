@@ -75,9 +75,9 @@ public class DataBase {
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
 
-    public boolean deleteWord(long rowId)
+    public boolean deleteWord(String word, String dictionary)
     {
-        return db.delete(DATABASE_TABLE, "id = " + rowId, null) > 0;
+        return db.delete(DATABASE_TABLE, "word = '" + word + "' and dictionary = '" + dictionary + "'", null) > 0;
     }
 
     public Cursor getWordFromDictionary(String dictionary) throws SQLException
@@ -86,6 +86,18 @@ public class DataBase {
                 db.query(true, DATABASE_TABLE, new String[] {WORD,
                         MEANING, DICTIONARY}, DICTIONARY + " = '" + dictionary + "'", null,
             null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    public Cursor getWordMeaning(String word) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(true, DATABASE_TABLE, new String[] {WORD,
+                                MEANING, DICTIONARY}, WORD + " like '%" + word + "%'", null,
+                        null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }

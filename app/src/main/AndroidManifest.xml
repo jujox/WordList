@@ -21,14 +21,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="es.juanjo.wordlist.wordlist.AddWordActivity"
-            android:label="@string/title_activity_add_word" >
-            <intent-filter>
-                <action android:name="es.juanjo.wordlist.wordlist.AddWordActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name="es.juanjo.wordlist.wordlist.PlayActivity"
             android:label="@string/title_activity_play" >
             <intent-filter>

@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,12 +15,9 @@ import android.view.ViewGroup;
 import android.database.Cursor;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
 
 
 public class PlayActivity extends Activity {
@@ -29,6 +25,7 @@ public class PlayActivity extends Activity {
     private List<String> words;
     private List<String> meanings;
     private Random randomGenerator;
+    CountDownTimer countDownTimer;
 
     private DataBase db = new DataBase(this);
     @Override
@@ -91,8 +88,7 @@ public class PlayActivity extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_play, container, false);
-            return rootView;
+            return inflater.inflate(R.layout.fragment_play, container, false);
         }
     }
     protected void RefrescarListaDiccionarios() {
@@ -118,6 +114,7 @@ public class PlayActivity extends Activity {
 
     public void getWords(String dictionary) {
         words.clear();
+        meanings.clear();
         Cursor c = db.getWordFromDictionary(dictionary);
         if (c.moveToFirst())
         {
@@ -137,6 +134,7 @@ public class PlayActivity extends Activity {
     public void Solve(String word, String meaning) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.solutionTitle));
         builder.setMessage(word + " : " + meaning);
         builder.setPositiveButton(R.string.playMore, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -162,29 +160,33 @@ public class PlayActivity extends Activity {
         builder.setMessage(word);
         builder.setPositiveButton(R.string.playMore, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                countDownTimer.cancel();
                 PlayDialog();
             }
         });
         builder.setNeutralButton(R.string.solution, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                countDownTimer.cancel();
                 Solve(word, meaning);
             }
         });
         builder.setNegativeButton(R.string.stopPlaying, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                countDownTimer.cancel();
                 // User cancelled the dialog
             }
         });
 
         final AlertDialog alertDialog = builder.create();
         alertDialog.show();
-        new CountDownTimer(10000, 1000) {
+        countDownTimer = new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 alertDialog.setMessage(word + "... " + millisUntilFinished / 1000);
             }
             public void onFinish() {
-                alertDialog.setMessage(word + " : " + meaning + "\n");
+                alertDialog.cancel();
+                Solve(word, meaning);
             }
         }.start();
 
