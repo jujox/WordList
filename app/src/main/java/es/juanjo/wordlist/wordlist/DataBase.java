@@ -84,7 +84,7 @@ public class DataBase {
     {
         Cursor mCursor =
                 db.query(true, DATABASE_TABLE, new String[] {WORD,
-                        MEANING, DICTIONARY}, DICTIONARY + " = " + dictionary, null,
+                        MEANING, DICTIONARY}, DICTIONARY + " = '" + dictionary + "'", null,
             null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();

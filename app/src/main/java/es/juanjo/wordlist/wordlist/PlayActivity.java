@@ -1,9 +1,13 @@
 package es.juanjo.wordlist.wordlist;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,13 +16,21 @@ import android.view.ViewGroup;
 import android.database.Cursor;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Timer;
 
 
 public class PlayActivity extends Activity {
 
+    private List<String> words;
+    private List<String> meanings;
+    private Random randomGenerator;
+
+    private DataBase db = new DataBase(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +45,17 @@ public class PlayActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
+        words = new ArrayList<String>();
+        meanings = new ArrayList<String>();
+        db.open();
+        randomGenerator = new Random();
         RefrescarListaDiccionarios();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        db.close();
     }
 
     @Override
@@ -74,8 +96,6 @@ public class PlayActivity extends Activity {
         }
     }
     protected void RefrescarListaDiccionarios() {
-        DataBase db = new DataBase(this);
-        db.open();
         Cursor c = db.getDictionaries();
         List<String> dictionaries = new ArrayList<String>();
         if (c.moveToFirst())
@@ -84,19 +104,90 @@ public class PlayActivity extends Activity {
                 dictionaries.add(c.getString(0));
             } while (c.moveToNext());
         }
-        db.close();
-
         Spinner spinnerDiccionarios = (Spinner) findViewById(R.id.spinnerDiccionarios);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, dictionaries);
         spinnerDiccionarios.setAdapter(adapter);
-        //TODO Controlar el diccionario seleccionado
         //TODO Añadir una opción "todos"
 
     }
 
     public void backToMain(View view) {
         startActivity(new Intent("es.juanjo.wordlist.wordlist.MainActivity"));
+    }
+
+    public void getWords(String dictionary) {
+        words.clear();
+        Cursor c = db.getWordFromDictionary(dictionary);
+        if (c.moveToFirst())
+        {
+            do {
+                words.add(c.getString(0));
+                meanings.add(c.getString(1));
+            } while (c.moveToNext());
+        }
+    }
+
+    public void play(View view) {
+        Spinner dict = (Spinner) findViewById(R.id.spinnerDiccionarios);
+        getWords(dict.getSelectedItem().toString());
+        PlayDialog();
+    }
+
+    public void Solve(String word, String meaning) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(word + " : " + meaning);
+        builder.setPositiveButton(R.string.playMore, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                PlayDialog();
+            }
+        });
+        builder.setNegativeButton(R.string.stopPlaying, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    public void PlayDialog() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Integer pos = randomGenerator.nextInt(words.size());
+        final String word = words.get(pos);
+        final String meaning = meanings.get(pos);
+        builder.setMessage(word);
+        builder.setPositiveButton(R.string.playMore, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                PlayDialog();
+            }
+        });
+        builder.setNeutralButton(R.string.solution, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Solve(word, meaning);
+            }
+        });
+        builder.setNegativeButton(R.string.stopPlaying, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        new CountDownTimer(10000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                alertDialog.setMessage(word + "... " + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                alertDialog.setMessage(word + " : " + meaning + "\n");
+            }
+        }.start();
+
     }
 
 }

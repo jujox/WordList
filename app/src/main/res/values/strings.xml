@@ -17,4 +17,7 @@
     <string name="title_activity_play">PlayActivity</string>
     <string name="playMsg">Time to play!</string>
     <string name="selectDictionary">Which dictionary do you want to play with?</string>
+    <string name="playMore">Give me another word!</string>
+    <string name="stopPlaying">Stop playing!</string>
+    <string name="solution">Solve and play more!</string>
 </resources>
