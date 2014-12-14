@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +68,8 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_play) {
+            startActivity(new Intent("es.juanjo.wordlist.wordlist.PlayActivity"));
             return true;
         }
 
@@ -109,6 +111,9 @@ public class MainActivity extends Activity {
         word.setText("");
         meaning.setText("");
         RefrescarListaDiccionarios();
+    }
+
+    protected void showPlay(Menu menu) {
     }
 
     protected void RefrescarListaDiccionarios() {

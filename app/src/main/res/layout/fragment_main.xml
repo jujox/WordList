@@ -15,34 +15,21 @@
 
     <EditText
         android:id="@+id/editTextSearch"
-        android:layout_width="wrap_content"
         android:inputType="textAutoComplete"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewSearch"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"/>
 
-
-    <Button
+    <ImageButton
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/buttonSearch"
+        android:src="@drawable/ic_action_search"
         android:id="@+id/buttonSearch"
-        android:layout_below="@id/editTextSearch"
-        android:layout_marginTop="50dp"
-        android:onClick="searchWord"/>
+        android:onClick="searchWord"
+        android:layout_alignTop="@+id/editTextSearch"
+        android:layout_toRightOf="@id/editTextSearch"
+        android:layout_width="wrap_content" />
 
-    <Button
-        android:layout_height="wrap_content"
-        android:text="@string/buttonPlay"
-        android:layout_width="wrap_content"
-        android:id="@+id/buttonPlay"
-        android:layout_toEndOf="@+id/buttonSearch"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/editTextSearch"
-        android:onClick="showPlayActivity"/>
 
     <!-- Add Word -->
 
@@ -52,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_below="@id/buttonPlay"/>
+        android:layout_below="@id/buttonSearch"/>
 
     <EditText
         android:id="@+id/editTextAddWord"
@@ -98,10 +85,10 @@
         android:layout_below="@id/textDictionary"
         android:completionThreshold="1"/>
 
-    <Button
+    <ImageButton
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/buttonSaveNewWord"
+        android:src="@drawable/ic_action_save"
         android:id="@+id/buttonSaveNewWord"
         android:layout_below="@id/editTextDictionary"
         android:layout_marginTop="10dp"
