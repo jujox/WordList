@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">WordList</string>
-    <string name="searchText">Busca una palabra:</string>
+    <string name="searchText">Buscar una palabra:</string>
     <string name="buttonSearch">Buscar</string>
     <string name="buttonAddNewWord">Añadir palabra:</string>
     <string name="buttonPlay">¡Jugar!</string>

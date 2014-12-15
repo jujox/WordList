@@ -3,15 +3,15 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="5dp"
     tools:context=".MainActivity$PlaceholderFragment"
     android:id="@+id/relativeLayout">
 
-   <TextView
-            android:layout_width="wrap_content"
-            android:text="@string/searchText"
-            android:id="@+id/textViewSearch"
-            android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="@string/searchText"
+        android:id="@+id/textViewSearch"
+        android:layout_height="wrap_content"/>
 
     <ImageButton
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:id="@+id/textAddWord"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@id/buttonSearch"/>
 
     <EditText
@@ -62,7 +62,7 @@
     <EditText
         android:id="@+id/editTextMeaning"
         android:inputType="textMultiLine"
-        android:lines="2"
+        android:lines="1"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_below="@id/textMeaning"
@@ -104,6 +104,5 @@
         android:layout_toRightOf="@id/buttonSaveNewWord"
         android:layout_marginTop="10dp"
         android:onClick="showPlayActivity"/>
-
 
 </RelativeLayout>

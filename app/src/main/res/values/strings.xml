@@ -2,8 +2,6 @@
 <resources>
 
     <string name="app_name">WordList</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="searchText">Search a word:</string>
     <string name="buttonSearch">Search</string>
     <string name="buttonAddNewWord">Add new word</string>
@@ -15,13 +13,12 @@
     <string name="buttonVolverPrincipal">Back</string>
     <string name="dictionaryText">List (the list will automatically be created if it does not exist):</string>
     <string name="Saved">Saved</string>
-    <string name="title_activity_play">PlayActivity</string>
+    <string name="title_activity_play">Play</string>
     <string name="playMsg">Time to play!</string>
     <string name="selectDictionary">Which list do you want to play with?</string>
     <string name="playMore">Give me another word!</string>
     <string name="stopPlaying">Stop playing!</string>
     <string name="solution">Solve and play more!</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="searchedWords">Words similar to:</string>
     <string name="close">Close</string>
     <string name="delete">Delete selected words</string>
