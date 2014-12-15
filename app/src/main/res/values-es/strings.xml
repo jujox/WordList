@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WordList</string>
+    <string name="searchText">Busca una palabra:</string>
+    <string name="buttonSearch">Buscar</string>
+    <string name="buttonAddNewWord">Añadir palabra:</string>
+    <string name="buttonPlay">¡Jugar!</string>
+    <string name="title_activity_add_word">Añadir Palabra</string>
+    <string name="addWordText">Nueva palabra:</string>
+    <string name="meaningText">Significado:</string>
+    <string name="buttonSaveNewWord">Guardar</string>
+    <string name="buttonVolverPrincipal">Atrás</string>
+    <string name="dictionaryText">Lista (la lista se creará automáticamente si no existe):</string>
+    <string name="Saved">Guardada</string>
+    <string name="title_activity_play">Jugar</string>
+    <string name="playMsg">¡Hora de jugar!</string>
+    <string name="selectDictionary">¿Con qué lista quieres jugar?</string>
+    <string name="playMore">¡Más palabras!</string>
+    <string name="stopPlaying">¡Dejar de jugar!</string>
+    <string name="solution">¡Resolver y jugar más!</string>
+    <string name="searchedWords">Palabras parecidas a:</string>
+    <string name="close">Cerrar</string>
+    <string name="delete">Borrar palabras seleccionadas</string>
+    <string name="deleted">Borrada: </string>
+    <string name="solutionTitle">Solución</string>
+
+</resources>

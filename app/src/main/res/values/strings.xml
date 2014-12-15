@@ -13,11 +13,11 @@
     <string name="meaningText">Meaning:</string>
     <string name="buttonSaveNewWord">Save</string>
     <string name="buttonVolverPrincipal">Back</string>
-    <string name="dictionaryText">Dictionary:</string>
+    <string name="dictionaryText">List (the list will automatically be created if it does not exist):</string>
     <string name="Saved">Saved</string>
     <string name="title_activity_play">PlayActivity</string>
     <string name="playMsg">Time to play!</string>
-    <string name="selectDictionary">Which dictionary do you want to play with?</string>
+    <string name="selectDictionary">Which list do you want to play with?</string>
     <string name="playMore">Give me another word!</string>
     <string name="stopPlaying">Stop playing!</string>
     <string name="solution">Solve and play more!</string>

@@ -16,20 +16,22 @@
         android:text="@string/selectDictionary"
         android:id="@+id/textView" />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinnerDiccionarios"
-        android:layout_below="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
-
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/playButton"
         android:src="@drawable/ic_action_play"
         android:layout_below="@+id/textView"
-        android:layout_toRightOf="@id/spinnerDiccionarios"
+        android:layout_alignParentRight="true"
         android:onClick="play"/>
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerDiccionarios"
+        android:layout_below="@+id/textView"
+        android:layout_toLeftOf="@id/playButton"
+        />
+
 
 </RelativeLayout>
