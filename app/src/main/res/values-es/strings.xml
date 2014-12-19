@@ -24,5 +24,8 @@
     <string name="delete">Borrar palabras seleccionadas</string>
     <string name="deleted">Borrada: </string>
     <string name="solutionTitle">Solución</string>
+    <string name="errorSaveParams">Por favor, rellene los campos: palabra, significado y lista</string>
+    <string name="errorEmptyList">No hay ninguna lista seleccionada</string>
+    <string name="meaning_play_title">¿Sabes lo que significa...?</string>
 
 </resources>

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.NavUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import android.view.ViewGroup;
 import android.database.Cursor;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -128,8 +131,15 @@ public class PlayActivity extends Activity {
 
     public void play(View view) {
         Spinner dict = (Spinner) findViewById(R.id.spinnerDiccionarios);
-        getWords(dict.getSelectedItem().toString());
-        PlayDialog();
+        if (dict.getAdapter().isEmpty()) {
+            String msg = getString(R.string.errorEmptyList);
+            Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.show();
+        } else {
+            getWords(dict.getSelectedItem().toString());
+            PlayDialog();
+        }
     }
 
     public void Solve(String word, String meaning) {
@@ -159,6 +169,7 @@ public class PlayActivity extends Activity {
         final String word = words.get(pos);
         final String meaning = meanings.get(pos);
         builder.setMessage(word);
+        builder.setTitle(getString(R.string.meaning_play_title));
         builder.setPositiveButton(R.string.playMore, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 countDownTimer.cancel();
@@ -183,7 +194,7 @@ public class PlayActivity extends Activity {
         countDownTimer = new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                alertDialog.setMessage(word + "... " + millisUntilFinished / 1000);
+                alertDialog.setMessage(word + "  ...  " + millisUntilFinished / 1000);
             }
             public void onFinish() {
                 alertDialog.cancel();

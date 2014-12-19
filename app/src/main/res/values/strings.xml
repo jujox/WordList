@@ -24,5 +24,8 @@
     <string name="delete">Delete selected words</string>
     <string name="deleted">Deleted: </string>
     <string name="solutionTitle">Solution</string>
+    <string name="errorSaveParams">Please, fill in the fields: word, meaning and list</string>
+    <string name="errorEmptyList">There is no list selected</string>
+    <string name="meaning_play_title">Do you know the meaning of...?</string>
 
 </resources>

@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,9 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.content.Intent;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -50,6 +54,18 @@ public class MainActivity extends Activity {
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
         );
+        EditText dictionary = (EditText) findViewById(R.id.editTextDictionary);
+        dictionary.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                boolean handled = false;
+                if (i == EditorInfo.IME_ACTION_DONE) {
+                    saveWord(null);
+                    handled = true;
+                }
+                return handled;
+            }
+         });
     }
 
     @Override
@@ -103,21 +119,25 @@ public class MainActivity extends Activity {
         final EditText word = (EditText) findViewById(R.id.editTextAddWord);
         final EditText meaning = (EditText) findViewById(R.id.editTextMeaning);
         final EditText dictionary = (EditText) findViewById(R.id.editTextDictionary);
-        System.out.println("Saving word: " + word.getText().toString());
-        db.insertWord(word.getText().toString(), meaning.getText().toString(),
-                dictionary.getText().toString());
-
-        // Mostramos mensaje y borramos los textos anteriores
-        // @TODO Los mensajes deben ir a la configuración por idiomas
-        String msg = getString(R.string.Saved);
-        Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-        toast.show();
-        word.setText("");
-        meaning.setText("");
-        RefrescarListaDiccionarios();
-    }
-
-    protected void showPlay(Menu menu) {
+        if (word.getText().toString().isEmpty() ||
+                meaning.getText().toString().isEmpty() ||
+                dictionary.getText().toString().isEmpty()) {
+            String msg = getString(R.string.errorSaveParams);
+            Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.show();
+        } else {
+            db.insertWord(word.getText().toString(), meaning.getText().toString(),
+                    dictionary.getText().toString());
+            // Mostramos mensaje y borramos los textos anteriores
+            // @TODO Los mensajes deben ir a la configuración por idiomas
+            String msg = getString(R.string.Saved);
+            Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+            toast.show();
+            word.setText("");
+            meaning.setText("");
+            RefrescarListaDiccionarios();
+        }
     }
 
     protected void RefrescarListaDiccionarios() {

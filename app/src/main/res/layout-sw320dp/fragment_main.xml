@@ -18,8 +18,9 @@
         android:src="@drawable/ic_action_search"
         android:id="@+id/buttonSearch"
         android:onClick="searchWord"
-        android:layout_alignTop="@+id/editTextSearch"
+        android:layout_below="@id/textViewSearch"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content" />
 
     <EditText
@@ -61,8 +62,7 @@
 
     <EditText
         android:id="@+id/editTextMeaning"
-        android:inputType="textMultiLine"
-        android:lines="1"
+        android:inputType="text"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_below="@id/textMeaning"
@@ -84,7 +84,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/textDictionary"
-        android:completionThreshold="1"/>
+        android:completionThreshold="1"
+        android:inputType="text"
+        android:imeOptions="actionDone"/>
 
     <ImageButton
         android:layout_height="wrap_content"
