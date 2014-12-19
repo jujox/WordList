@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">WordList</string>
     <string name="searchText">Buscar una palabra:</string>
     <string name="buttonSearch">Buscar</string>
