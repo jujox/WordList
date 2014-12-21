@@ -50,6 +50,7 @@
         android:layout_below="@id/textAddWord"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"/>
 
     <TextView
@@ -68,6 +69,7 @@
         android:layout_below="@id/textMeaning"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"/>
 
     <TextView
@@ -83,6 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@id/textDictionary"
         android:completionThreshold="1"/>
 

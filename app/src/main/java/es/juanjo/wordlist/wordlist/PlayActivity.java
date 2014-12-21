@@ -57,6 +57,8 @@ public class PlayActivity extends Activity {
     @Override
     public void onStop() {
         super.onStop();
+        if (countDownTimer != null)
+            countDownTimer.cancel();
         db.close();
     }
 
@@ -163,11 +165,13 @@ public class PlayActivity extends Activity {
     }
 
     public void PlayDialog() {
-
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         Integer pos = randomGenerator.nextInt(words.size());
         final String word = words.get(pos);
         final String meaning = meanings.get(pos);
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
         builder.setMessage(word);
         builder.setTitle(getString(R.string.meaning_play_title));
         builder.setPositiveButton(R.string.playMore, new DialogInterface.OnClickListener() {
@@ -188,9 +192,7 @@ public class PlayActivity extends Activity {
                 // User cancelled the dialog
             }
         });
-
         final AlertDialog alertDialog = builder.create();
-        alertDialog.show();
         countDownTimer = new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -201,6 +203,7 @@ public class PlayActivity extends Activity {
                 Solve(word, meaning);
             }
         }.start();
+        alertDialog.show();
 
     }
 
