@@ -8,7 +8,7 @@ android {
         applicationId "es.juanjo.wordlist.wordlist"
         minSdkVersion 16
         targetSdkVersion 20
-        versionCode 4
+        versionCode 5
         versionName "Aldebaran"
     }
     buildTypes {

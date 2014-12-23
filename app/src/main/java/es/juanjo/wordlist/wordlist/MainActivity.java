@@ -133,6 +133,7 @@ public class MainActivity extends Activity {
             // @TODO Los mensajes deben ir a la configuración por idiomas
             String msg = getString(R.string.Saved);
             Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
             toast.show();
             word.setText("");
             meaning.setText("");
@@ -184,6 +185,7 @@ public class MainActivity extends Activity {
             if (db.deleteWord(delete[0], delete[2])) {
                 String msg = getString(R.string.deleted) + delete[0] + " on " + delete[2];
                 Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                 toast.show();
             }
         }
